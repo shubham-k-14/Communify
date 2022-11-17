@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script defer type="module" src="./client.js"></script>
+     <link rel="stylesheet" href="cstyle.css">
+    <title>Chat App</title>
+</head>
+<body>
+   
+    <main>
+        
+        <section class="glass">
+            <div class="left-div">
+                <div class="logo-div">
+                <img src="chat.png" class="logo" alt="Logo failed to load">
+                <div class="name"> Communify </div>
+                    <h3>Get Connected with Family and 
+                        Friends Around the World</h3>
+                    </div>
+                        <div class="refer-code">
+                           <h4>Enter your name to join </h4>
+                           <div class="form1">
+            
+                               <input type="text" id="join-box" class="refer-input">
+                               <button class="btn" id="name-btn" >Join</button>
+                         
+                        </div>
+                        </div>
+            </div>
+
+            <div class="right-div">
+                <div class="container">
+                         <!-- <div class="msg left">Hello</div> 
+                        <div class="msg right">Hello</div> -->
+                        
+                </div>
+                
+                <div id="send-message" class="message"> 
+                    <form action="">
+                    <input type="text"  class=" message-box"  id="msgInput" placeholder="Type your message here" onfocus="hideEmojiPanel()">
+                    <div class="emoji" ><img src="./happy.png" onclick="showEmojiPanel()" alt=""></div>
+                    <button class="send-button" type="submit">Send</button>
+                    <div class="emojiPanel" id ="emojiPanel" style="display:none;"></div>
+            </form>
+                </div>
+            </div>
+        
+        
+        </section>
+    </main>
+    
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+<script>
+    /////Emoji
+ function showEmojiPanel(){
+     document.getElementById('emojiPanel').removeAttribute('style');
+ }
+
+ function hideEmojiPanel(){
+     document.getElementById('emojiPanel').setAttribute('style','display:none;');
+ }
+
+ function getEmoji(control){
+      document.getElementById('msgInput').value += control.innerHTML;
+ }
+  
+  loadAllEmojis();
+  function loadAllEmojis(){
+      var emoji='';
+     for(var i=128512 ; i<=128567; i++){
+          emoji += `<a href="#" onclick="getEmoji(this)">&#${i};</a>`;
+      }
+      document.getElementById('emojiPanel').innerHTML= emoji;
+  }
+ 
+   document.body.addEventListener('click',()=>{
+     document.getElementById('emojiPanel').setAttribute('style','display:none;');
+   },true)
+  
+</script>
+</body>
+</html>
