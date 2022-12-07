@@ -23,6 +23,8 @@ const io = require("socket.io")(8000, {
 
 const users={};
 
+console.log("server starting")
+
 io.on('connection',(socket)=>{
     socket.on('new-user-joined',(name)=>{
         console.log("New user : " + name);

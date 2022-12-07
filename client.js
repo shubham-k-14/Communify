@@ -6,6 +6,7 @@ const socket = io("http://localhost:8000");
 
 
 
+
 const form = document.getElementById('send-message');
 const msgInput= document.getElementById('msgInput');
 const msgContainer = document.querySelector('.container');
